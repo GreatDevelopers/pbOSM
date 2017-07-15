@@ -62,7 +62,7 @@
 @stadium: @societal_amenities; // also fitness_centre and sports_centre
 @golf_course: #b5e3b5;
 
-#landcover-low-zoom[zoom < 10],
+#landcover-low-zoom[zoom>5][zoom < 10],
 #landcover[zoom >= 10] {
 
   ::first {

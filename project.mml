@@ -30,7 +30,7 @@ _parts:
     srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
   osm2pgsql: &osm2pgsql
     type: "postgis"
-    dbname: "gis"
+    dbname: "punj"
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
@@ -56,6 +56,42 @@ Stylesheet:
   - addressing.mss
   - zoom-level.mss
 Layer:
+  - id: world
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp
+      type: shape
+    properties:
+      maxzoom: 9
+  - id: coast-poly
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/land-polygons-split-3857/land_polygons.shp
+      type: shape
+    properties:
+      minzoom: 10
+  - id: builtup
+    geometry: polygon
+    extent: *world
+    srs-name: mercator
+    srs: "+proj=merc +datum=WGS84 +over"
+    Datasource:
+      file: data/world_boundaries/builtup_area.shp
+      type: shape
+    properties:
+      minzoom: 8
+      maxzoom: 9
+  - id: necountries
+    geometry: linestring
+    <<: *extents84
+    Datasource:
+      file: data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
+      type: shape
+    properties:
+      minzoom: 1
+      maxzoom: 3
   - id: landcover-low-zoom
     name: landcover-low-zoom
     geometry: polygon

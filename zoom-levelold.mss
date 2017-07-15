@@ -1,6 +1,5 @@
 #zoom_levels {
-/*
-[admin_level = 'admin_level_2'][zoom>=3][zoom<5] {
+/*[admin_level = 'admin_level_2'][zoom>=3][zoom<5] {
 text-name: "[name]";
 ["name" != null]["boundary" = null] {
           text-name: "[name]";
@@ -18,9 +17,9 @@ polygon-fill: #765543;
 polygon-gamma:0.4;
 polygon-opacity: 0.5;
 
-}
+}*/
 [admin_level = 'admin_level_3'][zoom>=5][zoom<6] {
-polygon-fill: #123456 * 0.1; 
+polygon-fill: @landform-color * 0.1; 
 polygon-gamma:0.4;
 line-color: #000;
 polygon-opacity: 0.65;
@@ -31,14 +30,13 @@ text-halo-radius: @standard-halo-radius;
 text-fill: #000;
 text-face-name: @book-fonts;
 }
-*/
 [admin_level = 'admin_level_4'][zoom>=6][zoom<8]{
 polygon-fill: #cccccc;
 polygon-gamma:0.4;
 line-color: #000;
 polygon-opacity: 0.65;
 text-name: "[name]";
-text-size:30;
+text-size:16;
 text-line-spacing: -1.65;
 text-halo-radius: @standard-halo-radius;
 text-fill: #000;
@@ -51,7 +49,7 @@ polygon-gamma:0.4;
 line-color: #000;
 polygon-opacity: 0.65;
 text-name: "[name]";
-text-size:26;
+text-size:11;
 text-line-spacing: -1.3;
 text-halo-radius: @standard-halo-radius;
 text-fill: #000;
@@ -64,7 +62,7 @@ polygon-gamma:0.4;
 line-color: #000;
 polygon-opacity: 0.65;
 text-name: "[name]";
-text-size:26;
+text-size:14;
 text-line-spacing: -1.3;
 text-halo-radius: @standard-halo-radius;
 text-fill: #000;
@@ -77,7 +75,7 @@ polygon-gamma:0.4;
 line-color: #000;
 polygon-opacity: 0.65;
 text-name: "[name]";
-text-size:26;
+text-size:13;
 text-line-spacing: -1.3;
 text-halo-radius: @standard-halo-radius;
 text-fill: #000;
@@ -90,7 +88,7 @@ polygon-gamma:0.4;
 line-color: #000;
 polygon-opacity: 0.65;
 text-name: "[name]";
-text-size:26;
+text-size:13;
 text-line-spacing: -1.3;
 text-halo-radius: @standard-halo-radius;
 text-fill: #000;
@@ -103,7 +101,7 @@ polygon-gamma:0.4;
 line-color: #000;
 polygon-opacity: 0.5;
 text-name: "[name]";
-text-size:26;
+text-size:13;
 text-line-spacing: -1.3;
 text-halo-radius: @standard-halo-radius;
 text-fill: #000;
@@ -116,7 +114,7 @@ polygon-gamma:0.4;
 line-color: #000;
 polygon-opacity: 0.5;
 text-name: "[name]";
-text-size:26;
+text-size:12;
 text-line-spacing: -1.3;
 text-halo-radius: @standard-halo-radius;
 text-fill: #000;
@@ -126,7 +124,7 @@ text-face-name: @book-fonts;
 }
 
 #india_boundary{
-[zoom>=3][zoom<7]
+[zoom>=3][zoom<5]
 {line-color: #E76423;
 line-width: 2;
 }

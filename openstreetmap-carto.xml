@@ -240,84 +240,6 @@
   <Font face-name="unifont Medium"/>
   <Font face-name="Unifont Upper Medium"/>
 </FontSet>
-<Style name="world" filter-mode="first">
-  <Rule>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <PolygonSymbolizer fill="#f2efe9" />
-  </Rule>
-</Style>
-<Layer name="world"
-  minimum-scale-denominator="750000"
-  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>world</StyleName>
-    <Datasource>
-       <Parameter name="file"><![CDATA[data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp]]></Parameter>
-       <Parameter name="type"><![CDATA[shape]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Style name="coast-poly" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <PolygonSymbolizer fill="#f2efe9" />
-  </Rule>
-</Style>
-<Layer name="coast-poly"
-  maximum-scale-denominator="750000"
-  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>coast-poly</StyleName>
-    <Datasource>
-       <Parameter name="file"><![CDATA[data/land-polygons-split-3857/land_polygons.shp]]></Parameter>
-       <Parameter name="type"><![CDATA[shape]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Style name="builtup" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>3000000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <PolygonSymbolizer fill="#dddddd" />
-  </Rule>
-</Style>
-<Layer name="builtup"
-  maximum-scale-denominator="3000000"
-  minimum-scale-denominator="750000"
-  srs="+proj=merc +datum=WGS84 +over">
-    <StyleName>builtup</StyleName>
-    <Datasource>
-       <Parameter name="file"><![CDATA[data/world_boundaries/builtup_area.shp]]></Parameter>
-       <Parameter name="type"><![CDATA[shape]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Style name="necountries" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>100000000</MaxScaleDenominator>
-    <MinScaleDenominator>50000000</MinScaleDenominator>
-    <LineSymbolizer stroke-width="0.4" stroke="#ac46ac" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000000</MaxScaleDenominator>
-    <MinScaleDenominator>100000000</MinScaleDenominator>
-    <LineSymbolizer stroke-width="0.3" stroke="#ac46ac" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>500000000</MaxScaleDenominator>
-    <MinScaleDenominator>200000000</MinScaleDenominator>
-    <LineSymbolizer stroke-width="0.2" stroke="#ac46ac" />
-  </Rule>
-</Style>
-<Layer name="necountries"
-  maximum-scale-denominator="500000000"
-  minimum-scale-denominator="50000000"
-  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
-    <StyleName>necountries</StyleName>
-    <Datasource>
-       <Parameter name="file"><![CDATA[data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp]]></Parameter>
-       <Parameter name="type"><![CDATA[shape]]></Parameter>
-    </Datasource>
-  </Layer>
-
 <Style name="landcover-low-zoom" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
@@ -454,13 +376,13 @@
   <Rule>
     <MaxScaleDenominator>3000000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([feature] = 'natural_wood')</Filter>
+    <Filter>([feature] = 'landuse_forest')</Filter>
     <PolygonSymbolizer fill="#add19e" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>3000000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([feature] = 'landuse_forest')</Filter>
+    <Filter>([feature] = 'natural_wood')</Filter>
     <PolygonSymbolizer fill="#add19e" />
   </Rule>
 </Style>
@@ -480,25 +402,25 @@
   <Rule>
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([feature] = 'wetland_tidalflat') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="rgba(203, 177, 154, 0.3)" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([feature] = 'wetland_mud') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="rgba(203, 177, 154, 0.3)" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([feature] = 'wetland_mud')</Filter>
-    <PolygonSymbolizer fill="rgba(203, 177, 154, 0.3)" />
+    <Filter>([feature] = 'wetland_tidalflat') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="rgba(203, 177, 154, 0.3)" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([feature] = 'wetland_tidalflat')</Filter>
+    <PolygonSymbolizer fill="rgba(203, 177, 154, 0.3)" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([feature] = 'wetland_mud')</Filter>
     <PolygonSymbolizer fill="rgba(203, 177, 154, 0.3)" />
   </Rule>
 </Style>
@@ -510,7 +432,7 @@
     <StyleName>landcover-low-zoom</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -699,6 +621,60 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#f0f0d8" />
+    <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#f0f0d8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#e0dfdf" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#f0f0d8" />
+    <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#f0f0d8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#e0dfdf" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([feature] = 'amenity_kindergarten')</Filter>
+    <PolygonSymbolizer fill="#f0f0d8" />
+    <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_kindergarten')</Filter>
+    <PolygonSymbolizer fill="#f0f0d8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_kindergarten')</Filter>
+    <PolygonSymbolizer fill="#e0dfdf" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([feature] = 'amenity_school') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#f0f0d8" />
     <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
@@ -804,72 +780,6 @@
     <MinScaleDenominator>200000</MinScaleDenominator>
     <Filter>([feature] = 'amenity_university')</Filter>
     <PolygonSymbolizer fill="#e0dfdf" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#f0f0d8" />
-    <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#f0f0d8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#e0dfdf" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#f0f0d8" />
-    <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#f0f0d8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_kindergarten') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#e0dfdf" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_kindergarten')</Filter>
-    <PolygonSymbolizer fill="#f0f0d8" />
-    <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_kindergarten')</Filter>
-    <PolygonSymbolizer fill="#f0f0d8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_kindergarten')</Filter>
-    <PolygonSymbolizer fill="#e0dfdf" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_scree') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#eee5dc" />
-    <PolygonPatternSymbolizer gamma="0.3" file="symbols/scree_overlay.png" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'natural_scree') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#eee5dc" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
@@ -881,6 +791,18 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
     <Filter>([feature] = 'natural_shingle') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#eee5dc" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([feature] = 'natural_scree') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#eee5dc" />
+    <PolygonPatternSymbolizer gamma="0.3" file="symbols/scree_overlay.png" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([feature] = 'natural_scree') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#eee5dc" />
   </Rule>
   <Rule>
@@ -969,114 +891,6 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
-    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#ebdbe8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
-    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#ebdbe8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_sub_station') and ([name] != '')</Filter>
-    <PolygonSymbolizer fill="#e2cbde" />
-    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_sub_station') and ([name] != '')</Filter>
-    <PolygonSymbolizer fill="#e2cbde" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_sub_station') and ([name] != '')</Filter>
-    <PolygonSymbolizer fill="#ebdbe8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
-    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#ebdbe8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
-    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#ebdbe8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([name] != '')</Filter>
-    <PolygonSymbolizer fill="#e2cbde" />
-    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([name] != '')</Filter>
-    <PolygonSymbolizer fill="#e2cbde" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([name] != '')</Filter>
-    <PolygonSymbolizer fill="#ebdbe8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([feature] = 'power_generator') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
     <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
@@ -1181,6 +995,114 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
     <Filter>([feature] = 'power_station') and ([name] != '')</Filter>
+    <PolygonSymbolizer fill="#ebdbe8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
+    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#ebdbe8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
+    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#ebdbe8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([name] != '')</Filter>
+    <PolygonSymbolizer fill="#e2cbde" />
+    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([name] != '')</Filter>
+    <PolygonSymbolizer fill="#e2cbde" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([name] != '')</Filter>
+    <PolygonSymbolizer fill="#ebdbe8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
+    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#ebdbe8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
+    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'power_sub_station') and ([name] != '') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#ebdbe8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([feature] = 'power_sub_station') and ([name] != '')</Filter>
+    <PolygonSymbolizer fill="#e2cbde" />
+    <LineSymbolizer stroke-width="0.7" stroke="#bba4b7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([feature] = 'power_sub_station') and ([name] != '')</Filter>
+    <PolygonSymbolizer fill="#e2cbde" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'power_sub_station') and ([name] != '')</Filter>
     <PolygonSymbolizer fill="#ebdbe8" />
   </Rule>
   <Rule>
@@ -1411,38 +1333,14 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
-    <PolygonPatternSymbolizer gamma="0.3" file="symbols/grave_yard_generic.png" />
+    <PolygonPatternSymbolizer gamma="0.3" file="symbols/grave_yard_jewish.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
-    <PolygonPatternSymbolizer gamma="0.3" file="symbols/grave_yard_generic.png" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'christian') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
-    <PolygonPatternSymbolizer gamma="0.3" file="symbols/grave_yard_christian.png" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'christian') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
   </Rule>
   <Rule>
@@ -1459,14 +1357,38 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
-    <PolygonPatternSymbolizer gamma="0.3" file="symbols/grave_yard_jewish.png" />
+    <PolygonPatternSymbolizer gamma="0.3" file="symbols/grave_yard_generic.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'christian') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
+    <PolygonPatternSymbolizer gamma="0.3" file="symbols/grave_yard_christian.png" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'christian') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
+    <PolygonPatternSymbolizer gamma="0.3" file="symbols/grave_yard_generic.png" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
   </Rule>
   <Rule>
@@ -1483,14 +1405,14 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
-    <PolygonPatternSymbolizer gamma="0.75" file="symbols/grave_yard_generic.png" />
+    <PolygonPatternSymbolizer gamma="0.75" file="symbols/grave_yard_jewish.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
   </Rule>
   <Rule>
@@ -1507,42 +1429,6 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
-    <PolygonPatternSymbolizer gamma="0.75" file="symbols/grave_yard_jewish.png" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'christian') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
-    <PolygonPatternSymbolizer gamma="0.75" file="symbols/grave_yard_christian.png" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'christian') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'christian') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
-    <PolygonPatternSymbolizer gamma="0.75" file="symbols/grave_yard_christian.png" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'christian') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
     <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
     <PolygonPatternSymbolizer gamma="0.75" file="symbols/grave_yard_generic.png" />
@@ -1551,6 +1437,42 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
     <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'christian') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
+    <PolygonPatternSymbolizer gamma="0.75" file="symbols/grave_yard_christian.png" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'christian') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'christian') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
+    <PolygonPatternSymbolizer gamma="0.75" file="symbols/grave_yard_christian.png" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'christian') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
+    <PolygonPatternSymbolizer gamma="0.75" file="symbols/grave_yard_generic.png" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'INT-generic') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#aacbaf" />
   </Rule>
   <Rule>
@@ -1627,38 +1549,38 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_stadium') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'leisure_fitness_centre') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#f0f0d8" />
     <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'leisure_stadium') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'leisure_fitness_centre') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#f0f0d8" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_stadium') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'leisure_fitness_centre') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#f0f0d8" />
     <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'leisure_stadium') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'leisure_fitness_centre') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#f0f0d8" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_stadium')</Filter>
+    <Filter>([feature] = 'leisure_fitness_centre')</Filter>
     <PolygonSymbolizer fill="#f0f0d8" />
     <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'leisure_stadium')</Filter>
+    <Filter>([feature] = 'leisure_fitness_centre')</Filter>
     <PolygonSymbolizer fill="#f0f0d8" />
   </Rule>
   <Rule>
@@ -1699,44 +1621,39 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_fitness_centre') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'leisure_stadium') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#f0f0d8" />
     <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'leisure_fitness_centre') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'leisure_stadium') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#f0f0d8" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_fitness_centre') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'leisure_stadium') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#f0f0d8" />
     <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'leisure_fitness_centre') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'leisure_stadium') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#f0f0d8" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_fitness_centre')</Filter>
+    <Filter>([feature] = 'leisure_stadium')</Filter>
     <PolygonSymbolizer fill="#f0f0d8" />
     <LineSymbolizer stroke-width="0.3" stroke="#bebe57" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'leisure_fitness_centre')</Filter>
+    <Filter>([feature] = 'leisure_stadium')</Filter>
     <PolygonSymbolizer fill="#f0f0d8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'highway_rest_area') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#efc8c8" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
@@ -1745,12 +1662,17 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'highway_services') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#efc8c8" />
+    <Filter>([feature] = 'highway_rest_area') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#efc8c8" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <Filter>([feature] = 'highway_rest_area') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#efc8c8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'highway_services') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#efc8c8" />
   </Rule>
   <Rule>
@@ -1765,12 +1687,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_beach') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'natural_shoal') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#fff1ba" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_shoal') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'natural_beach') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#fff1ba" />
   </Rule>
   <Rule>
@@ -1797,14 +1719,14 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_bicycle_parking') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'amenity_motorcycle_parking') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#f7efb7" />
     <LineSymbolizer stroke-width="0.3" stroke="#e2c600" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_bicycle_parking') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'amenity_motorcycle_parking') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#f7efb7" />
   </Rule>
   <Rule>
@@ -1821,27 +1743,15 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_motorcycle_parking') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'amenity_bicycle_parking') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#f7efb7" />
     <LineSymbolizer stroke-width="0.3" stroke="#e2c600" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_motorcycle_parking') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'amenity_bicycle_parking') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#f7efb7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_motorcycle_parking') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#f7efb7" />
-    <LineSymbolizer stroke-width="0.3" stroke="#e2c600" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_motorcycle_parking') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#f7efb7" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
@@ -1853,6 +1763,18 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
     <Filter>([feature] = 'amenity_bicycle_parking') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#f7efb7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <Filter>([feature] = 'amenity_motorcycle_parking') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#f7efb7" />
+    <LineSymbolizer stroke-width="0.3" stroke="#e2c600" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'amenity_motorcycle_parking') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#f7efb7" />
   </Rule>
   <Rule>
@@ -1881,31 +1803,31 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_motorcycle_parking')</Filter>
+    <Filter>([feature] = 'amenity_bicycle_parking')</Filter>
     <PolygonSymbolizer fill="#f7efb7" />
     <LineSymbolizer stroke-width="0.3" stroke="#e2c600" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_motorcycle_parking')</Filter>
+    <Filter>([feature] = 'amenity_bicycle_parking')</Filter>
     <PolygonSymbolizer fill="#f7efb7" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_bicycle_parking')</Filter>
+    <Filter>([feature] = 'amenity_motorcycle_parking')</Filter>
     <PolygonSymbolizer fill="#f7efb7" />
     <LineSymbolizer stroke-width="0.3" stroke="#e2c600" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_bicycle_parking')</Filter>
+    <Filter>([feature] = 'amenity_motorcycle_parking')</Filter>
     <PolygonSymbolizer fill="#f7efb7" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_wet_meadow') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'wetland_marsh') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#cdebb0" />
   </Rule>
   <Rule>
@@ -1915,12 +1837,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_marsh') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'wetland_wet_meadow') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#cdebb0" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_wet_meadow') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'wetland_fen') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
   </Rule>
   <Rule>
@@ -1930,7 +1852,7 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_fen') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'wetland_wet_meadow') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
   </Rule>
   <Rule>
@@ -1945,12 +1867,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_string_bog') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'wetland_bog') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#d6d99f" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_bog') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'wetland_string_bog') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#d6d99f" />
   </Rule>
   <Rule>
@@ -2041,12 +1963,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_construction') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'landuse_brownfield') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#c7c7b4" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_brownfield') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'landuse_construction') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#c7c7b4" />
   </Rule>
   <Rule>
@@ -2097,20 +2019,20 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_generator') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
     <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_generator') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
   </Rule>
   <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_generator') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#ebdbe8" />
   </Rule>
   <Rule>
@@ -2133,24 +2055,6 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
-    <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#ebdbe8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([feature] = 'power_station') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
     <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
@@ -2165,6 +2069,24 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
     <Filter>([feature] = 'power_station') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#ebdbe8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([feature] = 'power_generator') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
+    <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([feature] = 'power_generator') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#e2cbde" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'power_generator') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#ebdbe8" />
   </Rule>
   <Rule>
@@ -2205,24 +2127,6 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
-    <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#ebdbe8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([feature] = 'power_station') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
     <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
@@ -2241,20 +2145,38 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_generator')</Filter>
+    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
+    <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#e2cbde" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'power_substation') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#ebdbe8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([feature] = 'power_sub_station')</Filter>
     <PolygonSymbolizer fill="#e2cbde" />
     <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_generator')</Filter>
+    <Filter>([feature] = 'power_sub_station')</Filter>
     <PolygonSymbolizer fill="#e2cbde" />
   </Rule>
   <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_generator')</Filter>
+    <Filter>([feature] = 'power_sub_station')</Filter>
     <PolygonSymbolizer fill="#ebdbe8" />
   </Rule>
   <Rule>
@@ -2277,6 +2199,24 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <Filter>([feature] = 'power_generator')</Filter>
+    <PolygonSymbolizer fill="#e2cbde" />
+    <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <Filter>([feature] = 'power_generator')</Filter>
+    <PolygonSymbolizer fill="#e2cbde" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([feature] = 'power_generator')</Filter>
+    <PolygonSymbolizer fill="#ebdbe8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([feature] = 'power_station')</Filter>
     <PolygonSymbolizer fill="#e2cbde" />
     <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
@@ -2291,24 +2231,6 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
     <Filter>([feature] = 'power_station')</Filter>
-    <PolygonSymbolizer fill="#ebdbe8" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'power_sub_station')</Filter>
-    <PolygonSymbolizer fill="#e2cbde" />
-    <LineSymbolizer stroke-width="0.5" stroke="#bba4b7" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'power_sub_station')</Filter>
-    <PolygonSymbolizer fill="#e2cbde" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <MinScaleDenominator>25000</MinScaleDenominator>
-    <Filter>([feature] = 'power_sub_station')</Filter>
     <PolygonSymbolizer fill="#ebdbe8" />
   </Rule>
   <Rule>
@@ -2371,12 +2293,7 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_recreation_ground') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#cdebb0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_village_green') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'leisure_garden') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#cdebb0" />
   </Rule>
   <Rule>
@@ -2386,17 +2303,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_garden') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'landuse_village_green') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#cdebb0" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_meadow') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#cdebb0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_grassland') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'landuse_recreation_ground') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#cdebb0" />
   </Rule>
   <Rule>
@@ -2406,7 +2318,37 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'natural_grassland') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#cdebb0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'landuse_meadow') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#cdebb0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
     <Filter>([feature] = 'landuse_recreation_ground') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'leisure_garden') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'landuse_grass') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'natural_grassland') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'landuse_meadow') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
   </Rule>
   <Rule>
@@ -2420,26 +2362,6 @@
     <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
   </Rule>
   <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_garden') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_meadow') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_grassland') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_grass') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#cdebb0" />
-  </Rule>
-  <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
     <Filter>([feature] = 'landuse_farmland') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#fbecd7" />
@@ -2465,26 +2387,26 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_farmland') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'landuse_greenhouse_horticulture') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#fbecd7" />
     <LineSymbolizer stroke-width="0.5" stroke="#d6c4ab" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'landuse_farmland') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'landuse_greenhouse_horticulture') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#fbecd7" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_greenhouse_horticulture') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'landuse_farmland') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#fbecd7" />
     <LineSymbolizer stroke-width="0.5" stroke="#d6c4ab" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([feature] = 'landuse_greenhouse_horticulture') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'landuse_farmland') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#fbecd7" />
   </Rule>
   <Rule>
@@ -2546,11 +2468,6 @@
     <MinScaleDenominator>12500</MinScaleDenominator>
     <Filter>([feature] = 'landuse_farmyard')</Filter>
     <PolygonSymbolizer fill="#f5dcba" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_wood') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#add19e" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
@@ -2559,12 +2476,17 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_wood') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#add19e" />
+    <Filter>([feature] = 'natural_wood') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#add19e" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <Filter>([feature] = 'landuse_forest') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#add19e" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'natural_wood') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#add19e" />
   </Rule>
   <Rule>
@@ -2592,23 +2514,23 @@
     <PolygonSymbolizer gamma="0.75" fill="#eecfb3" />
   </Rule>
   <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_miniature_golf') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#b5e3b5" />
-  </Rule>
-  <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <Filter>([feature] = 'leisure_golf_course') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#b5e3b5" />
   </Rule>
   <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_golf_course') and ([way_pixels] &gt;= 4)</Filter>
-    <PolygonSymbolizer gamma="0.75" fill="#b5e3b5" />
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <Filter>([feature] = 'leisure_miniature_golf') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#b5e3b5" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <Filter>([feature] = 'leisure_miniature_golf') and ([way_pixels] &gt;= 4)</Filter>
+    <PolygonSymbolizer gamma="0.75" fill="#b5e3b5" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'leisure_golf_course') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#b5e3b5" />
   </Rule>
   <Rule>
@@ -2637,12 +2559,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_park') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'leisure_recreation_ground') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#c8facc" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_recreation_ground') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'leisure_park') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#c8facc" />
   </Rule>
   <Rule>
@@ -2780,36 +2702,36 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish')</Filter>
+    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'jewish')</Filter>
     <PolygonSymbolizer fill="#aacbaf" />
     <PolygonPatternSymbolizer file="symbols/grave_yard_jewish.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish')</Filter>
+    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'jewish')</Filter>
     <PolygonSymbolizer fill="#aacbaf" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'jewish')</Filter>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish')</Filter>
     <PolygonSymbolizer fill="#aacbaf" />
     <PolygonPatternSymbolizer file="symbols/grave_yard_jewish.png" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([feature] = 'landuse_cemetery') and ([religion] = 'jewish')</Filter>
+    <Filter>([feature] = 'amenity_grave_yard') and ([religion] = 'jewish')</Filter>
     <PolygonSymbolizer fill="#aacbaf" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'landuse_cemetery') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_cemetery') and ([way_pixels] &gt;= 64)</Filter>
+    <Filter>([feature] = 'amenity_grave_yard') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#aacbaf" />
   </Rule>
   <Rule>
@@ -2938,18 +2860,6 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'tourism_picnic_site') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#def6c0" />
-    <LineSymbolizer stroke="#498400" stroke-width="0.3" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'tourism_picnic_site') and ([way_pixels] &gt;= 64)</Filter>
-    <PolygonSymbolizer gamma="0.3" fill="#def6c0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([feature] = 'tourism_caravan_site') and ([way_pixels] &gt;= 64)</Filter>
     <PolygonSymbolizer gamma="0.3" fill="#def6c0" />
     <LineSymbolizer stroke="#498400" stroke-width="0.3" />
@@ -2974,14 +2884,26 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'tourism_camp_site') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'tourism_picnic_site') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#def6c0" />
+    <LineSymbolizer stroke="#498400" stroke-width="0.3" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([feature] = 'tourism_picnic_site') and ([way_pixels] &gt;= 64)</Filter>
+    <PolygonSymbolizer gamma="0.3" fill="#def6c0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([feature] = 'tourism_picnic_site') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#def6c0" />
     <LineSymbolizer stroke="#498400" stroke-width="0.3" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'tourism_camp_site') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'tourism_picnic_site') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#def6c0" />
   </Rule>
   <Rule>
@@ -2998,27 +2920,15 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'tourism_picnic_site') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'tourism_camp_site') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#def6c0" />
     <LineSymbolizer stroke="#498400" stroke-width="0.3" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'tourism_picnic_site') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'tourism_camp_site') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="#def6c0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([feature] = 'tourism_picnic_site')</Filter>
-    <PolygonSymbolizer fill="#def6c0" />
-    <LineSymbolizer stroke="#498400" stroke-width="0.3" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([feature] = 'tourism_picnic_site')</Filter>
-    <PolygonSymbolizer fill="#def6c0" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000</MaxScaleDenominator>
@@ -3030,6 +2940,18 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
     <Filter>([feature] = 'tourism_caravan_site')</Filter>
+    <PolygonSymbolizer fill="#def6c0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([feature] = 'tourism_picnic_site')</Filter>
+    <PolygonSymbolizer fill="#def6c0" />
+    <LineSymbolizer stroke="#498400" stroke-width="0.3" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([feature] = 'tourism_picnic_site')</Filter>
     <PolygonSymbolizer fill="#def6c0" />
   </Rule>
   <Rule>
@@ -3085,12 +3007,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_beach')</Filter>
+    <Filter>([feature] = 'natural_shoal')</Filter>
     <PolygonSymbolizer fill="#fff1ba" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_shoal')</Filter>
+    <Filter>([feature] = 'natural_beach')</Filter>
     <PolygonSymbolizer fill="#fff1ba" />
   </Rule>
   <Rule>
@@ -3106,7 +3028,7 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_fen')</Filter>
+    <Filter>([feature] = 'wetland_marsh')</Filter>
     <PolygonSymbolizer fill="#cdebb0" />
   </Rule>
   <Rule>
@@ -3116,17 +3038,17 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_marsh')</Filter>
+    <Filter>([feature] = 'wetland_fen')</Filter>
     <PolygonSymbolizer fill="#cdebb0" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_string_bog')</Filter>
+    <Filter>([feature] = 'wetland_bog')</Filter>
     <PolygonSymbolizer fill="#d6d99f" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_bog')</Filter>
+    <Filter>([feature] = 'wetland_string_bog')</Filter>
     <PolygonSymbolizer fill="#d6d99f" />
   </Rule>
   <Rule>
@@ -3171,27 +3093,7 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_meadow')</Filter>
-    <PolygonSymbolizer fill="#cdebb0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_common')</Filter>
-    <PolygonSymbolizer fill="#cdebb0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'natural_grassland')</Filter>
-    <PolygonSymbolizer fill="#cdebb0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_village_green')</Filter>
-    <PolygonSymbolizer fill="#cdebb0" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_recreation_ground')</Filter>
+    <Filter>([feature] = 'leisure_garden')</Filter>
     <PolygonSymbolizer fill="#cdebb0" />
   </Rule>
   <Rule>
@@ -3201,17 +3103,37 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_garden')</Filter>
+    <Filter>([feature] = 'landuse_village_green')</Filter>
     <PolygonSymbolizer fill="#cdebb0" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_forest')</Filter>
-    <PolygonSymbolizer fill="#add19e" />
+    <Filter>([feature] = 'leisure_common')</Filter>
+    <PolygonSymbolizer fill="#cdebb0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'landuse_recreation_ground')</Filter>
+    <PolygonSymbolizer fill="#cdebb0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'natural_grassland')</Filter>
+    <PolygonSymbolizer fill="#cdebb0" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'landuse_meadow')</Filter>
+    <PolygonSymbolizer fill="#cdebb0" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <Filter>([feature] = 'natural_wood')</Filter>
+    <PolygonSymbolizer fill="#add19e" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'landuse_forest')</Filter>
     <PolygonSymbolizer fill="#add19e" />
   </Rule>
   <Rule>
@@ -3227,13 +3149,13 @@
     <PolygonSymbolizer fill="#eecfb3" />
   </Rule>
   <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_golf_course')</Filter>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <Filter>([feature] = 'leisure_miniature_golf')</Filter>
     <PolygonSymbolizer fill="#b5e3b5" />
   </Rule>
   <Rule>
-    <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_miniature_golf')</Filter>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <Filter>([feature] = 'leisure_golf_course')</Filter>
     <PolygonSymbolizer fill="#b5e3b5" />
   </Rule>
   <Rule>
@@ -3250,12 +3172,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_recreation_ground')</Filter>
+    <Filter>([feature] = 'leisure_park')</Filter>
     <PolygonSymbolizer fill="#c8facc" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'leisure_park')</Filter>
+    <Filter>([feature] = 'leisure_recreation_ground')</Filter>
     <PolygonSymbolizer fill="#c8facc" />
   </Rule>
   <Rule>
@@ -3265,12 +3187,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'landuse_cemetery')</Filter>
+    <Filter>([feature] = 'amenity_grave_yard')</Filter>
     <PolygonSymbolizer fill="#aacbaf" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'amenity_grave_yard')</Filter>
+    <Filter>([feature] = 'landuse_cemetery')</Filter>
     <PolygonSymbolizer fill="#aacbaf" />
   </Rule>
   <Rule>
@@ -3335,12 +3257,12 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_mud') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'wetland_tidalflat') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="rgba(203, 177, 154, 0.3)" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <Filter>([feature] = 'wetland_tidalflat') and ([way_pixels] &gt;= 4)</Filter>
+    <Filter>([feature] = 'wetland_mud') and ([way_pixels] &gt;= 4)</Filter>
     <PolygonSymbolizer gamma="0.75" fill="rgba(203, 177, 154, 0.3)" />
   </Rule>
   <Rule>
@@ -3361,7 +3283,7 @@
     <StyleName>landcover</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -3431,7 +3353,7 @@
     <StyleName>landcover-line</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -3493,7 +3415,7 @@
     <StyleName>water-lines-casing</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -3551,7 +3473,7 @@
     <StyleName>water-lines-low-zoom</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -3674,7 +3596,7 @@
     <StyleName>water-areas-landuse</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -3707,54 +3629,6 @@
 <Style name="landcover-area-symbols" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'shells') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'shells') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'shells')</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'pebblestone') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'pebblestone') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'pebblestone')</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'shingle') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'shingle') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'shingle')</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
     <Filter>([natural] = 'shoal') and ([surface] = 'pebblestone') and ([int_wetland] != null)</Filter>
     <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
@@ -3771,34 +3645,34 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'gravel') and ([int_wetland] != null)</Filter>
+    <Filter>([natural] = 'beach') and ([surface] = 'pebbles') and ([int_wetland] != null)</Filter>
     <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'gravel') and ([int_wetland] != null)</Filter>
+    <Filter>([natural] = 'beach') and ([surface] = 'pebbles') and ([int_wetland] != null)</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'gravel')</Filter>
+    <Filter>([natural] = 'beach') and ([surface] = 'pebbles')</Filter>
     <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'shingle') and ([int_wetland] != null)</Filter>
+    <Filter>([natural] = 'shoal') and ([surface] = 'shells') and ([int_wetland] != null)</Filter>
     <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'shingle') and ([int_wetland] != null)</Filter>
+    <Filter>([natural] = 'shoal') and ([surface] = 'shells') and ([int_wetland] != null)</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'shingle')</Filter>
+    <Filter>([natural] = 'shoal') and ([surface] = 'shells')</Filter>
     <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
   <Rule>
@@ -3835,54 +3709,6 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'gravel') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'gravel') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'gravel')</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'fine_gravel') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'fine_gravel') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'fine_gravel')</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'fine_gravel') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'fine_gravel') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([surface] = 'fine_gravel')</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
     <Filter>([natural] = 'beach') and ([surface] = 'stones') and ([int_wetland] != null)</Filter>
     <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
@@ -3899,18 +3725,18 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'pebbles') and ([int_wetland] != null)</Filter>
+    <Filter>([natural] = 'shoal') and ([surface] = 'shingle') and ([int_wetland] != null)</Filter>
     <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'pebbles') and ([int_wetland] != null)</Filter>
+    <Filter>([natural] = 'shoal') and ([surface] = 'shingle') and ([int_wetland] != null)</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'pebbles')</Filter>
+    <Filter>([natural] = 'shoal') and ([surface] = 'shingle')</Filter>
     <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
   <Rule>
@@ -3931,19 +3757,99 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'sand') and ([int_wetland] != null)</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach.png" alignment="global" />
+    <Filter>([natural] = 'beach') and ([surface] = 'shingle') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'sand') and ([int_wetland] != null)</Filter>
+    <Filter>([natural] = 'beach') and ([surface] = 'shingle') and ([int_wetland] != null)</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([surface] = 'sand')</Filter>
-    <PolygonPatternSymbolizer file="symbols/beach.png" alignment="global" />
+    <Filter>([natural] = 'beach') and ([surface] = 'shingle')</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'shoal') and ([surface] = 'fine_gravel') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([natural] = 'shoal') and ([surface] = 'fine_gravel') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'shoal') and ([surface] = 'fine_gravel')</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'fine_gravel') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'fine_gravel') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'fine_gravel')</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'shoal') and ([surface] = 'gravel') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([natural] = 'shoal') and ([surface] = 'gravel') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'shoal') and ([surface] = 'gravel')</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'gravel') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'gravel') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'gravel')</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'pebblestone') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'pebblestone') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'pebblestone')</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach_coarse.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
@@ -3959,6 +3865,22 @@
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <Filter>([natural] = 'shoal') and ([surface] = 'sand')</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'sand') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/beach.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'sand') and ([int_wetland] != null)</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'beach') and ([surface] = 'sand')</Filter>
     <PolygonPatternSymbolizer file="symbols/beach.png" alignment="global" />
   </Rule>
   <Rule>
@@ -3979,6 +3901,17 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'shoal') and ([int_wetland] = 'fen')</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([natural] = 'shoal') and ([int_wetland] = 'fen')</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
     <Filter>([natural] = 'shoal') and ([int_wetland] = 'bog')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
   </Rule>
@@ -3997,17 +3930,6 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
     <Filter>([natural] = 'shoal') and ([int_wetland] = 'string_bog')</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([int_wetland] = 'fen')</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([int_wetland] = 'fen')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
@@ -4045,13 +3967,13 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([int_wetland] = 'saltmarsh')</Filter>
+    <Filter>([natural] = 'shoal') and ([int_wetland] = 'wet_meadow')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_marsh.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([int_wetland] = 'saltmarsh')</Filter>
+    <Filter>([natural] = 'shoal') and ([int_wetland] = 'wet_meadow')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
@@ -4067,13 +3989,13 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([int_wetland] = 'wet_meadow')</Filter>
+    <Filter>([natural] = 'shoal') and ([int_wetland] = 'saltmarsh')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_marsh.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'shoal') and ([int_wetland] = 'wet_meadow')</Filter>
+    <Filter>([natural] = 'shoal') and ([int_wetland] = 'saltmarsh')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
@@ -4083,6 +4005,17 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([natural] = 'beach') and ([int_wetland] = 'fen')</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([natural] = 'beach') and ([int_wetland] = 'fen')</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
     <Filter>([natural] = 'beach') and ([int_wetland] = 'bog')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
   </Rule>
@@ -4101,17 +4034,6 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
     <Filter>([natural] = 'beach') and ([int_wetland] = 'string_bog')</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([int_wetland] = 'fen')</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'beach') and ([int_wetland] = 'fen')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
@@ -4149,13 +4071,13 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([int_wetland] = 'saltmarsh')</Filter>
+    <Filter>([natural] = 'beach') and ([int_wetland] = 'wet_meadow')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_marsh.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'beach') and ([int_wetland] = 'saltmarsh')</Filter>
+    <Filter>([natural] = 'beach') and ([int_wetland] = 'wet_meadow')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
@@ -4171,13 +4093,13 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([natural] = 'beach') and ([int_wetland] = 'wet_meadow')</Filter>
+    <Filter>([natural] = 'beach') and ([int_wetland] = 'saltmarsh')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_marsh.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([natural] = 'beach') and ([int_wetland] = 'wet_meadow')</Filter>
+    <Filter>([natural] = 'beach') and ([int_wetland] = 'saltmarsh')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
@@ -4187,6 +4109,28 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([int_wetland] = 'fen') and ([natural] = 'reef')</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([int_wetland] = 'fen') and ([natural] = 'reef')</Filter>
+    <PolygonPatternSymbolizer file="symbols/reef.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <Filter>([int_wetland] = 'fen')</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([int_wetland] = 'fen')</Filter>
+    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
     <Filter>([int_wetland] = 'bog') and ([natural] = 'reef')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
   </Rule>
@@ -4227,28 +4171,6 @@
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
     <Filter>([int_wetland] = 'string_bog')</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([int_wetland] = 'fen') and ([natural] = 'reef')</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([int_wetland] = 'fen') and ([natural] = 'reef')</Filter>
-    <PolygonPatternSymbolizer file="symbols/reef.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([int_wetland] = 'fen')</Filter>
-    <PolygonPatternSymbolizer file="symbols/wetland_bog.png" alignment="global" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([int_wetland] = 'fen')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
@@ -4319,24 +4241,24 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([int_wetland] = 'saltmarsh') and ([natural] = 'reef')</Filter>
+    <Filter>([int_wetland] = 'wet_meadow') and ([natural] = 'reef')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_marsh.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([int_wetland] = 'saltmarsh') and ([natural] = 'reef')</Filter>
+    <Filter>([int_wetland] = 'wet_meadow') and ([natural] = 'reef')</Filter>
     <PolygonPatternSymbolizer file="symbols/reef.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([int_wetland] = 'saltmarsh')</Filter>
+    <Filter>([int_wetland] = 'wet_meadow')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_marsh.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([int_wetland] = 'saltmarsh')</Filter>
+    <Filter>([int_wetland] = 'wet_meadow')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
@@ -4363,24 +4285,24 @@
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([int_wetland] = 'wet_meadow') and ([natural] = 'reef')</Filter>
+    <Filter>([int_wetland] = 'saltmarsh') and ([natural] = 'reef')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_marsh.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([int_wetland] = 'wet_meadow') and ([natural] = 'reef')</Filter>
+    <Filter>([int_wetland] = 'saltmarsh') and ([natural] = 'reef')</Filter>
     <PolygonPatternSymbolizer file="symbols/reef.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <Filter>([int_wetland] = 'wet_meadow')</Filter>
+    <Filter>([int_wetland] = 'saltmarsh')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland_marsh.png" alignment="global" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <Filter>([int_wetland] = 'wet_meadow')</Filter>
+    <Filter>([int_wetland] = 'saltmarsh')</Filter>
     <PolygonPatternSymbolizer file="symbols/wetland.png" alignment="global" />
   </Rule>
   <Rule>
@@ -4401,7 +4323,7 @@
     <StyleName>landcover-area-symbols-wood</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -5830,7 +5752,7 @@
     <StyleName>water-lines</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -5869,7 +5791,7 @@
     <StyleName>water-barriers-line</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -5897,7 +5819,7 @@
     <StyleName>water-barriers-poly</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -5930,7 +5852,7 @@
     <StyleName>marinas-area</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -5965,7 +5887,7 @@
     <StyleName>piers-poly</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -6036,7 +5958,7 @@
     <StyleName>piers-line</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -6089,7 +6011,7 @@
     <StyleName>water-barriers-point</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -6113,7 +6035,7 @@
     <StyleName>bridge</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -6146,7 +6068,7 @@
     <StyleName>buildings</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -6221,7 +6143,7 @@
     <StyleName>buildings-major</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -11126,7 +11048,7 @@ AS buildings_major]]></Parameter>
     <StyleName>tunnels-fill</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -11303,7 +11225,7 @@ AS buildings_major]]></Parameter>
     <StyleName>landuse-overlay</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -11364,7 +11286,7 @@ AS buildings_major]]></Parameter>
     <StyleName>line-barriers</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -11411,7 +11333,7 @@ AS buildings_major]]></Parameter>
     <StyleName>cliffs-man_made</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -11488,7 +11410,7 @@ AS buildings_major]]></Parameter>
     <StyleName>area-barriers</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -11522,7 +11444,7 @@ AS buildings_major]]></Parameter>
     <StyleName>ferry-routes</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -11692,7 +11614,7 @@ AS buildings_major]]></Parameter>
     <StyleName>turning-circle-casing</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -11777,7 +11699,7 @@ AS buildings_major]]></Parameter>
     <StyleName>highway-area-casing</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -12282,7 +12204,7 @@ AS buildings_major]]></Parameter>
     <StyleName>roads-casing-casing</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -12494,7 +12416,7 @@ AS buildings_major]]></Parameter>
     <StyleName>highway-area-fill</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -16612,7 +16534,7 @@ AS buildings_major]]></Parameter>
     <StyleName>roads-fill-fill</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -16915,7 +16837,7 @@ AS buildings_major]]></Parameter>
     <StyleName>turning-circle-fill</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -17010,7 +16932,7 @@ AS buildings_major]]></Parameter>
     <StyleName>aerialways</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -17137,7 +17059,7 @@ AS buildings_major]]></Parameter>
     <StyleName>roads-low-zoom-fill</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -18568,7 +18490,7 @@ AS buildings_major]]></Parameter>
     <StyleName>waterway-bridges</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -23391,7 +23313,7 @@ AS buildings_major]]></Parameter>
     <StyleName>bridges-fill</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -23540,7 +23462,7 @@ AS buildings_major]]></Parameter>
     <StyleName>guideways</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -23659,7 +23581,7 @@ AS buildings_major]]></Parameter>
     <StyleName>admin-low-zoom</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -23740,7 +23662,7 @@ AS buildings_major]]></Parameter>
     <StyleName>admin-mid-zoom</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -23818,7 +23740,7 @@ AS buildings_major]]></Parameter>
     <StyleName>admin-high-zoom</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -23856,7 +23778,7 @@ AS buildings_major]]></Parameter>
     <StyleName>power-minorline</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -23900,7 +23822,7 @@ AS buildings_major]]></Parameter>
     <StyleName>power-line</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -23949,7 +23871,7 @@ AS buildings_major]]></Parameter>
     <StyleName>nature-reserve-boundaries</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -23969,31 +23891,6 @@ AS buildings_major]]></Parameter>
 <Style name="tourism-boundary" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
-    <Filter>([tourism] = 'zoo') and ([way_pixels] &gt;= 60)</Filter>
-    <LineSymbolizer stroke-width="2" offset="-1" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
-    <LineSymbolizer stroke-width="6" offset="-3" stroke="#734a08" stroke-opacity="0.3" stroke-linejoin="round" stroke-linecap="round" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>5000</MinScaleDenominator>
-    <Filter>([tourism] = 'zoo') and ([way_pixels] &gt;= 60)</Filter>
-    <LineSymbolizer stroke-width="1" offset="-0.5" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
-    <LineSymbolizer stroke-width="4" offset="-2" stroke="#734a08" stroke-opacity="0.3" stroke-linejoin="round" stroke-linecap="round" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>5000</MaxScaleDenominator>
-    <Filter>([tourism] = 'zoo') and ([way_pixels] &gt;= 20)</Filter>
-    <LineSymbolizer stroke-width="2" offset="-1" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
-    <LineSymbolizer stroke-width="6" offset="-3" stroke="#734a08" stroke-opacity="0.3" stroke-linejoin="round" stroke-linecap="round" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>5000</MinScaleDenominator>
-    <Filter>([tourism] = 'zoo') and ([way_pixels] &gt;= 20)</Filter>
-    <LineSymbolizer stroke-width="1" offset="-0.5" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>5000</MaxScaleDenominator>
     <Filter>([tourism] = 'theme_park') and ([way_pixels] &gt;= 60)</Filter>
     <LineSymbolizer stroke-width="2" offset="-1" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
     <LineSymbolizer stroke-width="6" offset="-3" stroke="#734a08" stroke-opacity="0.3" stroke-linejoin="round" stroke-linecap="round" />
@@ -24015,6 +23912,31 @@ AS buildings_major]]></Parameter>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
     <MinScaleDenominator>5000</MinScaleDenominator>
     <Filter>([tourism] = 'theme_park') and ([way_pixels] &gt;= 20)</Filter>
+    <LineSymbolizer stroke-width="1" offset="-0.5" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <Filter>([tourism] = 'zoo') and ([way_pixels] &gt;= 60)</Filter>
+    <LineSymbolizer stroke-width="2" offset="-1" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
+    <LineSymbolizer stroke-width="6" offset="-3" stroke="#734a08" stroke-opacity="0.3" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([tourism] = 'zoo') and ([way_pixels] &gt;= 60)</Filter>
+    <LineSymbolizer stroke-width="1" offset="-0.5" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
+    <LineSymbolizer stroke-width="4" offset="-2" stroke="#734a08" stroke-opacity="0.3" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <Filter>([tourism] = 'zoo') and ([way_pixels] &gt;= 20)</Filter>
+    <LineSymbolizer stroke-width="2" offset="-1" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
+    <LineSymbolizer stroke-width="6" offset="-3" stroke="#734a08" stroke-opacity="0.3" stroke-linejoin="round" stroke-linecap="round" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <Filter>([tourism] = 'zoo') and ([way_pixels] &gt;= 20)</Filter>
     <LineSymbolizer stroke-width="1" offset="-0.5" stroke="#734a08" stroke-opacity="0.5" stroke-linejoin="round" stroke-linecap="round" />
   </Rule>
 </Style>
@@ -24024,7 +23946,7 @@ AS buildings_major]]></Parameter>
     <StyleName>tourism-boundary</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -24126,7 +24048,7 @@ AS buildings_major]]></Parameter>
     <StyleName>trees-trunk</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -24162,10 +24084,16 @@ SELECT
     <TextSymbolizer size="12" wrap-width="45" line-spacing="-1.2" margin="8.4" fill="#763076" fontset-name="fontset-0" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement="interior" character-spacing="0.5"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
-    <MaxScaleDenominator>100000000</MaxScaleDenominator>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
     <Filter>([way_pixels] &gt; 1000) and ([way_pixels] &lt; 360000)</Filter>
-    <TextSymbolizer fill="#763076" fontset-name="fontset-0" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement="interior" character-spacing="0.5"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="11" wrap-width="40" line-spacing="-1.4" margin="7.7" fill="#763076" fontset-name="fontset-0" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement="interior" character-spacing="0.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000000</MaxScaleDenominator>
+    <MinScaleDenominator>50000000</MinScaleDenominator>
+    <Filter>([way_pixels] &gt; 1000) and ([way_pixels] &lt; 360000)</Filter>
+    <TextSymbolizer size="10" wrap-width="35" line-spacing="-1.5" margin="7" fill="#763076" fontset-name="fontset-0" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement="interior" character-spacing="0.5"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
 <Layer name="country-names"
@@ -24174,7 +24102,7 @@ SELECT
     <StyleName>country-names</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -24206,6 +24134,18 @@ SELECT
     <ShieldSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" placements="N,S,E,W" file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
   </Rule>
   <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([population] &gt; 600000) and ([dir] = 1)</Filter>
+    <ShieldSymbolizer wrap-width="45" line-spacing="-1.1" placements="N,S,E,W" file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" size="11" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([population] &gt; 600000) and ([dir] = 1)</Filter>
+    <ShieldSymbolizer placements="N,S,E,W" file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" size="11" wrap-width="30" line-spacing="-1.6" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <Filter>([population] &gt; 600000) and ([dir] = 1)</Filter>
     <TextSymbolizer size="15" wrap-width="75" line-spacing="-0.75" margin="10.5" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
@@ -24235,6 +24175,18 @@ SELECT
     <ShieldSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
   </Rule>
   <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([population] &gt; 600000)</Filter>
+    <ShieldSymbolizer wrap-width="45" line-spacing="-1.1" file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" size="11" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([population] &gt; 600000)</Filter>
+    <ShieldSymbolizer file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" size="11" wrap-width="30" line-spacing="-1.6" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <Filter>([population] &gt; 600000)</Filter>
     <TextSymbolizer size="15" wrap-width="75" line-spacing="-0.75" margin="10.5" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
@@ -24250,6 +24202,56 @@ SELECT
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([population] &gt; 600000)</Filter>
     <TextSymbolizer fontset-name="fontset-0" fill="#222222" size="13" wrap-width="65" line-spacing="-0.65" margin="9.1" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([dir] = 1)</Filter>
+    <ShieldSymbolizer file="symbols/place/place-capital-8.svg" dx="7" dy="7" size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" placements="N,S,E,W" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([dir] = 1)</Filter>
+    <ShieldSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" placements="N,S,E,W" file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([dir] = 1)</Filter>
+    <ShieldSymbolizer wrap-width="45" line-spacing="-1.1" placements="N,S,E,W" file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" size="11" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <Filter>([dir] = 1)</Filter>
+    <TextSymbolizer size="15" wrap-width="75" line-spacing="-0.75" margin="10.5" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([dir] = 1)</Filter>
+    <TextSymbolizer size="14" wrap-width="70" line-spacing="-0.7" margin="9.8" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([dir] = 1)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" fill="#222222" size="13" wrap-width="65" line-spacing="-0.65" margin="9.1" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
+    <ShieldSymbolizer file="symbols/place/place-capital-8.svg" dx="7" dy="7" size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <ShieldSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <ShieldSymbolizer wrap-width="45" line-spacing="-1.1" file="symbols/place/place-capital-6.svg" dx="6" dy="6" fontset-name="fontset-0" fill="#222222" size="11" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -24273,7 +24275,7 @@ SELECT
     <StyleName>capital-names</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -24300,7 +24302,7 @@ SELECT
     <TextSymbolizer size="11" wrap-width="50" line-spacing="-0.6" margin="7.7" fill="#845484" fontset-name="fontset-1" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement="interior"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
-    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
     <MinScaleDenominator>6500000</MinScaleDenominator>
     <Filter>([way_pixels] &gt; 3000) and ([way_pixels] &lt; 196000)</Filter>
     <TextSymbolizer size="10" wrap-width="30" line-spacing="-1.5" margin="7" fill="#845484" fontset-name="fontset-1" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement="interior"><![CDATA[[name]]]></TextSymbolizer>
@@ -24312,7 +24314,7 @@ SELECT
     <StyleName>state-names</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -24519,6 +24521,48 @@ SELECT
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
     <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([dir] = 1) and ([score] &gt;= 3000000)</Filter>
+    <ShieldSymbolizer file="symbols/place/place-6-z7.svg" size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" dx="5" dy="5" placements="N,S,E,W" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([dir] = 1) and ([score] &gt;= 3000000)</Filter>
+    <ShieldSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" file="symbols/place/place-6.svg" dx="5" dy="5" placements="N,S,E,W" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([dir] = 1) and ([score] &gt;= 3000000)</Filter>
+    <ShieldSymbolizer wrap-width="45" line-spacing="-1.1" placements="N,S,E,W" file="symbols/place/place-4.svg" dx="4" dy="4" fontset-name="fontset-0" fill="#222222" size="11" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([dir] = 1) and ([score] &gt;= 3000000)</Filter>
+    <ShieldSymbolizer placements="N,S,E,W" file="symbols/place/place-4.svg" dx="4" dy="4" fontset-name="fontset-0" fill="#222222" size="11" wrap-width="30" line-spacing="-1.65" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([dir] = 1) and ([score] &gt;= 3000000)</Filter>
+    <TextSymbolizer size="15" wrap-width="75" line-spacing="-0.75" margin="10.5" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([dir] = 1) and ([score] &gt;= 3000000)</Filter>
+    <TextSymbolizer size="14" wrap-width="70" line-spacing="-0.7" margin="9.8" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([dir] = 1) and ([score] &gt;= 3000000)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" fill="#222222" size="13" wrap-width="65" line-spacing="-0.65" margin="9.1" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([category] = 1) and ([score] &gt;= 400000) and ([dir] = 1)</Filter>
     <ShieldSymbolizer file="symbols/place/place-6-z7.svg" size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" dx="5" dy="5" placements="N,S,E,W" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
   </Rule>
@@ -24527,6 +24571,12 @@ SELECT
     <MinScaleDenominator>6500000</MinScaleDenominator>
     <Filter>([category] = 1) and ([score] &gt;= 400000) and ([dir] = 1)</Filter>
     <ShieldSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" file="symbols/place/place-6.svg" dx="5" dy="5" placements="N,S,E,W" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([score] &gt;= 400000) and ([dir] = 1)</Filter>
+    <ShieldSymbolizer wrap-width="45" line-spacing="-1.1" placements="N,S,E,W" file="symbols/place/place-4.svg" dx="4" dy="4" fontset-name="fontset-0" fill="#222222" size="11" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -24549,6 +24599,48 @@ SELECT
   <Rule>
     <MaxScaleDenominator>6500000</MaxScaleDenominator>
     <MinScaleDenominator>3000000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([score] &gt;= 3000000)</Filter>
+    <ShieldSymbolizer file="symbols/place/place-6-z7.svg" size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" dx="5" dy="5" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>12500000</MaxScaleDenominator>
+    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([score] &gt;= 3000000)</Filter>
+    <ShieldSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" file="symbols/place/place-6.svg" dx="5" dy="5" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([score] &gt;= 3000000)</Filter>
+    <ShieldSymbolizer wrap-width="45" line-spacing="-1.1" file="symbols/place/place-4.svg" dx="4" dy="4" fontset-name="fontset-0" fill="#222222" size="11" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([score] &gt;= 3000000)</Filter>
+    <TextSymbolizer size="15" wrap-width="75" line-spacing="-0.75" margin="10.5" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([score] &gt;= 3000000)</Filter>
+    <TextSymbolizer size="14" wrap-width="70" line-spacing="-0.7" margin="9.8" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([score] &gt;= 3000000)</Filter>
+    <ShieldSymbolizer file="symbols/place/place-4.svg" dx="4" dy="4" fontset-name="fontset-0" fill="#222222" size="11" wrap-width="30" line-spacing="-1.65" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([score] &gt;= 3000000)</Filter>
+    <TextSymbolizer fontset-name="fontset-0" fill="#222222" size="13" wrap-width="65" line-spacing="-0.65" margin="9.1" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>6500000</MaxScaleDenominator>
+    <MinScaleDenominator>3000000</MinScaleDenominator>
     <Filter>([category] = 1) and ([score] &gt;= 400000)</Filter>
     <ShieldSymbolizer file="symbols/place/place-6-z7.svg" size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" dx="5" dy="5" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
   </Rule>
@@ -24557,6 +24649,12 @@ SELECT
     <MinScaleDenominator>6500000</MinScaleDenominator>
     <Filter>([category] = 1) and ([score] &gt;= 400000)</Filter>
     <ShieldSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" file="symbols/place/place-6.svg" dx="5" dy="5" fontset-name="fontset-0" fill="#222222" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([category] = 1) and ([score] &gt;= 400000)</Filter>
+    <ShieldSymbolizer wrap-width="45" line-spacing="-1.1" file="symbols/place/place-4.svg" dx="4" dy="4" fontset-name="fontset-0" fill="#222222" size="11" margin="7.7" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" placement-type="simple" placements="S,N,E,W" unlock-image="true"><![CDATA[[name]]]></ShieldSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -24586,7 +24684,7 @@ SELECT
     <StyleName>placenames-medium-low-importance</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -24631,13 +24729,13 @@ SELECT
 <Style name="placenames-small-hamlet" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([place] = 'hamlet')</Filter>
+    <Filter>([place] = 'neighbourhood')</Filter>
     <TextSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" fill="#777777" halo-fill="#ffffff" fontset-name="fontset-0" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([place] = 'hamlet')</Filter>
+    <Filter>([place] = 'neighbourhood')</Filter>
     <TextSymbolizer size="10" fill="#222222" fontset-name="fontset-0" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" wrap-width="45" line-spacing="-0.8" margin="7"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
@@ -24653,13 +24751,13 @@ SELECT
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([place] = 'neighbourhood')</Filter>
+    <Filter>([place] = 'farm')</Filter>
     <TextSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" fill="#777777" halo-fill="#ffffff" fontset-name="fontset-0" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([place] = 'neighbourhood')</Filter>
+    <Filter>([place] = 'farm')</Filter>
     <TextSymbolizer size="10" fill="#222222" fontset-name="fontset-0" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" wrap-width="45" line-spacing="-0.8" margin="7"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
@@ -24675,13 +24773,13 @@ SELECT
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <Filter>([place] = 'farm')</Filter>
+    <Filter>([place] = 'hamlet')</Filter>
     <TextSymbolizer size="12" wrap-width="60" line-spacing="-0.6" margin="8.4" fill="#777777" halo-fill="#ffffff" fontset-name="fontset-0" halo-radius="1.5"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>12500</MinScaleDenominator>
-    <Filter>([place] = 'farm')</Filter>
+    <Filter>([place] = 'hamlet')</Filter>
     <TextSymbolizer size="10" fill="#222222" fontset-name="fontset-0" halo-fill="rgba(255, 255, 255, 0.6)" halo-radius="1.5" wrap-width="45" line-spacing="-0.8" margin="7"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
@@ -24745,7 +24843,7 @@ SELECT
     <StyleName>placenames-small-hamlet</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -24869,7 +24967,7 @@ SELECT
     <StyleName>stations-aerialway</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -24990,7 +25088,7 @@ SELECT
     <StyleName>stations-poly-aerialway</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -26287,7 +26385,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>amenity-points-poly-nozzle</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -27634,7 +27732,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>amenity-points-nozzle</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -27735,7 +27833,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>power-towers</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -27759,7 +27857,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>power-poles</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -27804,7 +27902,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>roads-text-ref-low-zoom</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -28003,7 +28101,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>junctions</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -28052,7 +28150,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>bridge-text</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -28204,7 +28302,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>roads-text-ref</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -28273,7 +28371,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>roads-area-text-name</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -29303,7 +29401,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>roads-text-name-directions</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -29436,7 +29534,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>paths-text-name</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -29676,7 +29774,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>text-poly-low-zoom</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -33045,7 +33143,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>text-poly</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -33167,7 +33265,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>text-line</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -36515,7 +36613,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>text-point</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -36645,7 +36743,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>building-text</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -36674,7 +36772,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>interpolation</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -36725,7 +36823,7 @@ WHERE railway IN ('station', 'halt', 'tram_stop')
     <StyleName>addresses</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -36806,7 +36904,7 @@ SELECT
     <StyleName>water-lines-text</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -36838,7 +36936,7 @@ SELECT
     <StyleName>ferry-routes-text</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -36864,7 +36962,7 @@ SELECT
     <StyleName>admin-text</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -36894,7 +36992,7 @@ SELECT
     <StyleName>nature-reserve-text</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -37043,7 +37141,7 @@ SELECT
     <StyleName>amenity-low-priority-amenity</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -37205,7 +37303,7 @@ SELECT
     <StyleName>amenity-low-priority-poly-amenity</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -37230,7 +37328,7 @@ SELECT
     <Filter>([admin_level] = 'admin_level_10')</Filter>
     <PolygonSymbolizer fill="#295332" gamma="0.4" fill-opacity="0.5" />
     <LineSymbolizer stroke="#000000" />
-    <TextSymbolizer size="26" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="12" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500</MaxScaleDenominator>
@@ -37238,7 +37336,7 @@ SELECT
     <Filter>([admin_level] = 'admin_level_9')</Filter>
     <PolygonSymbolizer fill="#d68035" gamma="0.4" fill-opacity="0.5" />
     <LineSymbolizer stroke="#000000" />
-    <TextSymbolizer size="26" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="13" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
@@ -37246,7 +37344,7 @@ SELECT
     <Filter>([admin_level] = 'admin_level_8')</Filter>
     <PolygonSymbolizer fill="#6c7b6d" gamma="0.4" fill-opacity="0.65" />
     <LineSymbolizer stroke="#000000" />
-    <TextSymbolizer size="26" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="13" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>200000</MaxScaleDenominator>
@@ -37254,7 +37352,7 @@ SELECT
     <Filter>([admin_level] = 'admin_level_7')</Filter>
     <PolygonSymbolizer fill="#1e7b79" gamma="0.4" fill-opacity="0.65" />
     <LineSymbolizer stroke="#000000" />
-    <TextSymbolizer size="26" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="13" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>750000</MaxScaleDenominator>
@@ -37262,7 +37360,7 @@ SELECT
     <Filter>([admin_level] = 'admin_level_6')</Filter>
     <PolygonSymbolizer fill="#cc1039" gamma="0.4" fill-opacity="0.65" />
     <LineSymbolizer stroke="#000000" />
-    <TextSymbolizer size="26" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="14" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>3000000</MaxScaleDenominator>
@@ -37270,7 +37368,7 @@ SELECT
     <Filter>([admin_level] = 'admin_level_5')</Filter>
     <PolygonSymbolizer fill="#ccc149" gamma="0.4" fill-opacity="0.65" />
     <LineSymbolizer stroke="#000000" />
-    <TextSymbolizer size="26" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="11" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>12500000</MaxScaleDenominator>
@@ -37278,7 +37376,15 @@ SELECT
     <Filter>([admin_level] = 'admin_level_4')</Filter>
     <PolygonSymbolizer fill="#cccccc" gamma="0.4" fill-opacity="0.65" />
     <LineSymbolizer stroke="#000000" />
-    <TextSymbolizer size="30" line-spacing="-1.65" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="16" line-spacing="-1.65" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>25000000</MaxScaleDenominator>
+    <MinScaleDenominator>12500000</MinScaleDenominator>
+    <Filter>([admin_level] = 'admin_level_3')</Filter>
+    <PolygonSymbolizer fill="#150e08" gamma="0.4" fill-opacity="0.65" />
+    <LineSymbolizer stroke="#000000" />
+    <TextSymbolizer size="12" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
 <Layer name="zoom_levels"
@@ -37287,7 +37393,7 @@ SELECT
     <StyleName>zoom_levels</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -37306,7 +37412,7 @@ SELECT
 <Style name="india_boundary" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>100000000</MaxScaleDenominator>
-    <MinScaleDenominator>6500000</MinScaleDenominator>
+    <MinScaleDenominator>25000000</MinScaleDenominator>
     <LineSymbolizer stroke="#e76423" stroke-width="2" />
   </Rule>
 </Style>
@@ -37316,7 +37422,7 @@ SELECT
     <StyleName>india_boundary</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>
@@ -37326,45 +37432,17 @@ SELECT
 
 <Style name="zoom_3n4" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>25000000</MaxScaleDenominator>
-    <MinScaleDenominator>12500000</MinScaleDenominator>
-    <Filter>([name] = 'Delhi')</Filter>
-    <TextSymbolizer size="36" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
-    <ShieldSymbolizer file="symbols/danger.png" fontset-name="fontset-0" size="10" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000000</MaxScaleDenominator>
+    <MaxScaleDenominator>100000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
     <Filter>([name] = 'Delhi')</Filter>
-    <TextSymbolizer size="32" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="10" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
     <ShieldSymbolizer file="symbols/danger.png" fontset-name="fontset-0" size="10" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>100000000</MaxScaleDenominator>
-    <MinScaleDenominator>50000000</MinScaleDenominator>
-    <Filter>([name] = 'Delhi')</Filter>
-    <TextSymbolizer size="20" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
-    <ShieldSymbolizer file="symbols/danger.png" fontset-name="fontset-0" size="10" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>25000000</MaxScaleDenominator>
-    <MinScaleDenominator>12500000</MinScaleDenominator>
-    <Filter>([name] = 'India')</Filter>
-    <TextSymbolizer size="36" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
-    <ShieldSymbolizer file="symbols/shop/hifi.svg" fontset-name="fontset-0" size="10" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000000</MaxScaleDenominator>
     <MinScaleDenominator>25000000</MinScaleDenominator>
     <Filter>([name] = 'India')</Filter>
-    <TextSymbolizer size="32" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
-    <ShieldSymbolizer file="symbols/shop/hifi.svg" fontset-name="fontset-0" size="10" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000000</MaxScaleDenominator>
-    <MinScaleDenominator>50000000</MinScaleDenominator>
-    <Filter>([name] = 'India')</Filter>
-    <TextSymbolizer size="20" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
+    <TextSymbolizer size="10" line-spacing="-1.3" halo-radius="1" fill="#000000" fontset-name="fontset-0"><![CDATA[[name]]]></TextSymbolizer>
     <ShieldSymbolizer file="symbols/shop/hifi.svg" fontset-name="fontset-0" size="10" />
   </Rule>
 </Style>
@@ -37374,7 +37452,7 @@ SELECT
     <StyleName>zoom_3n4</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="dbname"><![CDATA[punj]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="extent"><![CDATA[-20037508,-20037508,20037508,20037508]]></Parameter>

@@ -1,10 +1,10 @@
 #zoom_3n4 {
-[zoom>=3][zoom<6]
+[zoom>=3][zoom<5]
 {
 [name='India']
 {
 text-name: "[name]";
-text-size:20;
+text-size:10;
 text-line-spacing: -1.3;
 text-halo-radius: @standard-halo-radius;
 text-fill: #000;
@@ -27,13 +27,11 @@ shield-halo-fill: @standard-halo-fill;
 shield-halo-radius: @standard-halo-radius * 1.5;
 shield-placement-type: simple;
 */
-[zoom=4]{text-size: 32}
-[zoom=5]{text-size: 36}
 }
 [name='Delhi']
 {
 text-name: "[name]";
-text-size:20;
+text-size:10;
 text-line-spacing: -1.3;
 text-halo-radius: @standard-halo-radius;
 text-fill: #000;
@@ -56,8 +54,7 @@ shield-halo-fill: @standard-halo-fill;
 shield-halo-radius: @standard-halo-radius * 1.5;
 shield-placement-type: simple;
 */
-[zoom=4]{text-size: 32}
-[zoom=5]{text-size: 36}
 }
 }
 }
+
